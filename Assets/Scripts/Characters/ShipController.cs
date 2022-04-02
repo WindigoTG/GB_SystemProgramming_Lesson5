@@ -43,12 +43,17 @@ namespace Characters
                 return;
             }
 
-            gameObject.name = _playerName;
+            //gameObject.name = _playerName;
             _cameraOrbit = FindObjectOfType<CameraOrbit>();
             _cameraOrbit.Initiate(_cameraAttach == null ? transform :
             _cameraAttach);
             _playerLabel = GetComponentInChildren<PlayerLabel>();
             base.OnStartAuthority();
+        }
+
+        private void Start()
+        {
+            gameObject.name = _playerName;
         }
 
         protected override void HasAuthorityMovement()
