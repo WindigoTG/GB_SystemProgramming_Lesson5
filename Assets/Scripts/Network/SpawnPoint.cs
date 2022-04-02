@@ -8,6 +8,6 @@ public class SpawnPoint : NetworkStartPosition
     [SerializeField] private Transform lookTarget;
     private void OnEnable()
     {
-        transform.rotation = Quaternion.LookRotation(lookTarget.position - transform.position);
+        transform.rotation = Quaternion.LookRotation(lookTarget.position - transform.position, transform.up);
     }
 }

@@ -95,5 +95,61 @@ namespace Characters
         {
             _cameraOrbit?.CameraMovement();
         }
+
+        [ServerCallback]
+        private void OnTriggerEnter(Collider other)
+        {
+            Respawn();
+        }
+
+
+        [ServerCallback]
+        private void Disable()
+        {
+            DisableShip();
+            RpcDisable();
+        }
+
+        [ClientRpc]
+        private void RpcDisable()
+        {
+            DisableShip();
+        }
+
+        private void DisableShip()
+        {
+            gameObject.SetActive(false);
+        }
+
+        [ServerCallback]
+        private void Enable()
+        {
+            var respawnPosition = SolarSystemNetworkManager.Instance.GetSpawnPosition();
+            EnableShip(respawnPosition.position, respawnPosition.rotation);
+            RpcEnable(respawnPosition.position, respawnPosition.rotation);
+        }
+
+        [ClientRpc]
+        private void RpcEnable(Vector3 position, Quaternion rotation)
+        {
+            EnableShip( position, rotation);
+        }
+
+        private void EnableShip(Vector3 position, Quaternion rotation)
+        {
+            transform.position = position;
+            transform.rotation = rotation;
+            gameObject.SetActive(true);
+        }
+
+        [ServerCallback]
+        private async void Respawn()
+        {
+            Disable();
+
+            await System.Threading.Tasks.Task.Delay(2000);
+
+            Enable();
+        }
     }
 }

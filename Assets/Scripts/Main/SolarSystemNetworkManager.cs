@@ -2,7 +2,6 @@ using Characters;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
-using UnityEngine.Networking.NetworkSystem;
 using UnityEngine.UI;
 
 namespace Main
@@ -18,17 +17,22 @@ namespace Main
         private Dictionary<int, NetworkConnection> _connections;
         private Dictionary<int, short> _playerControllerIDs;
 
+        public static SolarSystemNetworkManager Instance { get; private set; }
+
+        private void Awake()
+        {
+            Instance = this;
+        }
+
         public override void OnServerAddPlayer(NetworkConnection conn, short playerControllerId)
         {
-            //var spawnTransform = GetStartPosition();
-            //var player = Instantiate(playerPrefab, spawnTransform.position, spawnTransform.rotation);
-
-            //player.GetComponent<ShipController>().PlayerName = $"Player {conn.connectionId}";//_playerName;
-
-            //NetworkServer.AddPlayerForConnection(conn, player, playerControllerId);
-
             _connections.Add(conn.connectionId, conn);
             _playerControllerIDs.Add(conn.connectionId, playerControllerId);
+        }
+
+        public Transform GetSpawnPosition()
+        {
+            return GetStartPosition();
         }
 
         public override void OnStartServer()
