@@ -25,7 +25,7 @@ namespace UI
                 var collider = obj.GetComponent<Collider>();
                 if (collider != null && camera.Visible(collider) && obj.transform != transform)
                 {
-                    GUI.Label(new Rect(new Vector2(position.x,Screen.height - position.y), new Vector2(10, name.Length * 10.5f )),
+                    GUI.Label(new Rect(new Vector2(position.x, Screen.height - position.y), new Vector2(10, name.Length * 10.5f)),
                         obj.name, style);
                 }
             }

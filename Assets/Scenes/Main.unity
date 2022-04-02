@@ -230,7 +230,7 @@ GameObject:
   - component: {fileID: 15773208}
   - component: {fileID: 15773212}
   m_Layer: 0
-  m_Name: Solar
+  m_Name: Sun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -341,10 +341,10 @@ GameObject:
   - component: {fileID: 45377282}
   - component: {fileID: 45377281}
   - component: {fileID: 45377280}
-  - component: {fileID: 45377279}
-  - component: {fileID: 45377278}
   - component: {fileID: 45377284}
   - component: {fileID: 45377285}
+  - component: {fileID: 45377279}
+  - component: {fileID: 45377278}
   m_Layer: 6
   m_Name: Mars
   m_TagString: Untagged
@@ -353,6 +353,22 @@ GameObject:
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!114 &45377278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 45377277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34cbc4338826545c59fcd11978e87f06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  visRange: 1000
+  visUpdateInterval: 1
+  checkMethod: 0
+  forceHidden: 0
+--- !u!114 &45377279
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -385,24 +401,6 @@ MonoBehaviour:
     i15: 0
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 0
---- !u!114 &45377279
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 45377277}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b10964541646eb3449bff403ebf87051, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  aroundPoint: {fileID: 15773211}
-  smoothTime: 0.3
-  circleInSecond: 0.0023
-  offsetSin: 1
-  offsetCos: 1
-  rotationSpeed: 0
 --- !u!135 &45377280
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -504,13 +502,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 45377277}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34cbc4338826545c59fcd11978e87f06, type: 3}
+  m_Script: {fileID: 11500000, guid: 140649baace1ddc4aba38f17f797e012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visRange: 1000
-  visUpdateInterval: 1
-  checkMethod: 0
-  forceHidden: 0
+  _aroundPoint: {fileID: 15773211}
+  _smoothTime: 0.3
+  _circleInSecond: 0.0023
+  _offsetSin: 1
+  _offsetCos: 1
+  _rotationSpeed: 0
 --- !u!1 &129235334
 GameObject:
   m_ObjectHideFlags: 0
@@ -551,7 +551,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 129235334}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02c42206f4ade644893019c34ffc9417, type: 3}
+  m_Script: {fileID: 11500000, guid: 53701953c8975364bb8b40ac84ea625d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   lookTarget: {fileID: 15773211}
@@ -598,9 +598,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 361298990}
-  - component: {fileID: 361298991}
-  - component: {fileID: 361298992}
   - component: {fileID: 361298993}
+  - component: {fileID: 361298992}
+  - component: {fileID: 361298991}
   m_Layer: 0
   m_Name: Main
   m_TagString: Untagged
@@ -633,10 +633,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 361298989}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2dcfd58edef89b43899333a75fee250, type: 3}
+  m_Script: {fileID: 11500000, guid: 4394a3eef724546f896557197e2d6c44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spaceShipSettings: {fileID: 11400000, guid: d738e91966f9b1e4eb92251c662818d1, type: 2}
+  manager: {fileID: 0}
+  showGUI: 1
+  offsetX: 0
+  offsetY: 0
 --- !u!114 &361298992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -646,7 +649,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 361298989}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a66a3c4661a833439ffb264eeaf8dd0, type: 3}
+  m_Script: {fileID: 11500000, guid: f589fa6fa1fcd034cac4040615698a29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_NetworkPort: 7777
@@ -663,8 +666,7 @@ MonoBehaviour:
   m_PlayerSpawnMethod: 0
   m_OfflineScene: 
   m_OnlineScene: 
-  m_SpawnPrefabs:
-  - {fileID: 7539821668303035303, guid: 916439e677db8ba4e938a7d573453819, type: 3}
+  m_SpawnPrefabs: []
   m_CustomConfig: 0
   m_MaxConnections: 4
   m_ConnectionConfig:
@@ -720,7 +722,7 @@ MonoBehaviour:
   matchSize: 4
   isNetworkActive: 0
   matchMaker: {fileID: 0}
-  playerName: MyPlayer
+  _playerName: DefaultName
 --- !u!114 &361298993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -730,13 +732,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 361298989}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4394a3eef724546f896557197e2d6c44, type: 3}
+  m_Script: {fileID: 11500000, guid: 13e9ce826c14b8a4889dc2a8709b3272, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manager: {fileID: 0}
-  showGUI: 1
-  offsetX: 0
-  offsetY: 0
+  _spaceShipSettings: {fileID: 11400000, guid: eea211da40c352d4d997d7441f22f14c, type: 2}
 --- !u!1 &556939019
 GameObject:
   m_ObjectHideFlags: 0
@@ -935,10 +934,10 @@ GameObject:
   - component: {fileID: 700499640}
   - component: {fileID: 700499639}
   - component: {fileID: 700499638}
-  - component: {fileID: 700499637}
-  - component: {fileID: 700499636}
   - component: {fileID: 700499642}
   - component: {fileID: 700499643}
+  - component: {fileID: 700499637}
+  - component: {fileID: 700499636}
   m_Layer: 6
   m_Name: Jupiter
   m_TagString: Untagged
@@ -947,6 +946,22 @@ GameObject:
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!114 &700499636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 700499635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34cbc4338826545c59fcd11978e87f06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  visRange: 1000
+  visUpdateInterval: 1
+  checkMethod: 0
+  forceHidden: 0
+--- !u!114 &700499637
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -979,24 +994,6 @@ MonoBehaviour:
     i15: 0
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 0
---- !u!114 &700499637
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 700499635}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b10964541646eb3449bff403ebf87051, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  aroundPoint: {fileID: 15773211}
-  smoothTime: 0.3
-  circleInSecond: 0.006
-  offsetSin: 1
-  offsetCos: 1
-  rotationSpeed: 10
 --- !u!135 &700499638
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1098,13 +1095,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 700499635}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34cbc4338826545c59fcd11978e87f06, type: 3}
+  m_Script: {fileID: 11500000, guid: 140649baace1ddc4aba38f17f797e012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visRange: 1000
-  visUpdateInterval: 1
-  checkMethod: 0
-  forceHidden: 0
+  _aroundPoint: {fileID: 15773211}
+  _smoothTime: 0.3
+  _circleInSecond: 0.006
+  _offsetSin: 1
+  _offsetCos: 1
+  _rotationSpeed: 10
 --- !u!1 &838646335
 GameObject:
   m_ObjectHideFlags: 0
@@ -1145,7 +1144,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 838646335}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02c42206f4ade644893019c34ffc9417, type: 3}
+  m_Script: {fileID: 11500000, guid: 53701953c8975364bb8b40ac84ea625d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   lookTarget: {fileID: 15773211}
@@ -1282,7 +1281,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1099454875}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02c42206f4ade644893019c34ffc9417, type: 3}
+  m_Script: {fileID: 11500000, guid: 53701953c8975364bb8b40ac84ea625d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   lookTarget: {fileID: 15773211}
@@ -1298,10 +1297,10 @@ GameObject:
   - component: {fileID: 1245412070}
   - component: {fileID: 1245412069}
   - component: {fileID: 1245412068}
-  - component: {fileID: 1245412067}
-  - component: {fileID: 1245412066}
   - component: {fileID: 1245412072}
   - component: {fileID: 1245412073}
+  - component: {fileID: 1245412067}
+  - component: {fileID: 1245412066}
   m_Layer: 6
   m_Name: Mercury
   m_TagString: Untagged
@@ -1318,30 +1317,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1245412065}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8258ea15b8f74c4889ce485d21cbbb1, type: 3}
+  m_Script: {fileID: 11500000, guid: 34cbc4338826545c59fcd11978e87f06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 0
-    i1: 0
-    i2: 0
-    i3: 0
-    i4: 0
-    i5: 0
-    i6: 0
-    i7: 0
-    i8: 0
-    i9: 0
-    i10: 0
-    i11: 0
-    i12: 0
-    i13: 0
-    i14: 0
-    i15: 0
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
+  visRange: 1000
+  visUpdateInterval: 1
+  checkMethod: 0
+  forceHidden: 0
 --- !u!114 &1245412067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1351,15 +1333,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1245412065}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b10964541646eb3449bff403ebf87051, type: 3}
+  m_Script: {fileID: 11500000, guid: 140649baace1ddc4aba38f17f797e012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aroundPoint: {fileID: 15773211}
-  smoothTime: 0.3
-  circleInSecond: 0.001
-  offsetSin: 1
-  offsetCos: 1
-  rotationSpeed: 1
+  _aroundPoint: {fileID: 15773211}
+  _smoothTime: 0.3
+  _circleInSecond: 0.001
+  _offsetSin: 1
+  _offsetCos: 1
+  _rotationSpeed: 1
 --- !u!135 &1245412068
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1461,13 +1443,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 1245412065}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34cbc4338826545c59fcd11978e87f06, type: 3}
+  m_Script: {fileID: 11500000, guid: f8258ea15b8f74c4889ce485d21cbbb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visRange: 1000
-  visUpdateInterval: 1
-  checkMethod: 0
-  forceHidden: 0
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 0
+    i1: 0
+    i2: 0
+    i3: 0
+    i4: 0
+    i5: 0
+    i6: 0
+    i7: 0
+    i8: 0
+    i9: 0
+    i10: 0
+    i11: 0
+    i12: 0
+    i13: 0
+    i14: 0
+    i15: 0
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!1 &1329998756
 GameObject:
   m_ObjectHideFlags: 0
@@ -1480,10 +1479,10 @@ GameObject:
   - component: {fileID: 1329998761}
   - component: {fileID: 1329998760}
   - component: {fileID: 1329998759}
-  - component: {fileID: 1329998758}
-  - component: {fileID: 1329998757}
   - component: {fileID: 1329998763}
   - component: {fileID: 1329998764}
+  - component: {fileID: 1329998758}
+  - component: {fileID: 1329998757}
   m_Layer: 6
   m_Name: Saturn
   m_TagString: Untagged
@@ -1492,6 +1491,22 @@ GameObject:
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!114 &1329998757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1329998756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34cbc4338826545c59fcd11978e87f06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  visRange: 1000
+  visUpdateInterval: 1
+  checkMethod: 0
+  forceHidden: 0
+--- !u!114 &1329998758
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1524,24 +1539,6 @@ MonoBehaviour:
     i15: 0
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 0
---- !u!114 &1329998758
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1329998756}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b10964541646eb3449bff403ebf87051, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  aroundPoint: {fileID: 15773211}
-  smoothTime: 0.3
-  circleInSecond: 0.003
-  offsetSin: 1
-  offsetCos: 1
-  rotationSpeed: 12
 --- !u!135 &1329998759
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1643,13 +1640,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1329998756}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34cbc4338826545c59fcd11978e87f06, type: 3}
+  m_Script: {fileID: 11500000, guid: 140649baace1ddc4aba38f17f797e012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visRange: 1000
-  visUpdateInterval: 1
-  checkMethod: 0
-  forceHidden: 0
+  _aroundPoint: {fileID: 15773211}
+  _smoothTime: 0.3
+  _circleInSecond: 0.003
+  _offsetSin: 1
+  _offsetCos: 1
+  _rotationSpeed: 12
 --- !u!1 &1384955455
 GameObject:
   m_ObjectHideFlags: 0
@@ -1697,10 +1696,10 @@ GameObject:
   - component: {fileID: 1396188073}
   - component: {fileID: 1396188072}
   - component: {fileID: 1396188071}
-  - component: {fileID: 1396188070}
-  - component: {fileID: 1396188069}
   - component: {fileID: 1396188075}
   - component: {fileID: 1396188076}
+  - component: {fileID: 1396188070}
+  - component: {fileID: 1396188069}
   m_Layer: 6
   m_Name: Neptune
   m_TagString: Untagged
@@ -1709,6 +1708,22 @@ GameObject:
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!114 &1396188069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1396188068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34cbc4338826545c59fcd11978e87f06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  visRange: 1000
+  visUpdateInterval: 1
+  checkMethod: 0
+  forceHidden: 0
+--- !u!114 &1396188070
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1741,24 +1756,6 @@ MonoBehaviour:
     i15: 0
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 0
---- !u!114 &1396188070
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1396188068}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b10964541646eb3449bff403ebf87051, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  aroundPoint: {fileID: 15773211}
-  smoothTime: 0.3
-  circleInSecond: 0.008
-  offsetSin: 1
-  offsetCos: 1
-  rotationSpeed: 8
 --- !u!135 &1396188071
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1860,13 +1857,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1396188068}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34cbc4338826545c59fcd11978e87f06, type: 3}
+  m_Script: {fileID: 11500000, guid: 140649baace1ddc4aba38f17f797e012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visRange: 1000
-  visUpdateInterval: 1
-  checkMethod: 0
-  forceHidden: 0
+  _aroundPoint: {fileID: 15773211}
+  _smoothTime: 0.3
+  _circleInSecond: 0.008
+  _offsetSin: 1
+  _offsetCos: 1
+  _rotationSpeed: 8
 --- !u!1 &1463486864
 GameObject:
   m_ObjectHideFlags: 0
@@ -1907,7 +1906,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1463486864}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02c42206f4ade644893019c34ffc9417, type: 3}
+  m_Script: {fileID: 11500000, guid: 53701953c8975364bb8b40ac84ea625d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   lookTarget: {fileID: 15773211}
@@ -1923,10 +1922,10 @@ GameObject:
   - component: {fileID: 1540168949}
   - component: {fileID: 1540168948}
   - component: {fileID: 1540168947}
-  - component: {fileID: 1540168946}
-  - component: {fileID: 1540168945}
   - component: {fileID: 1540168951}
   - component: {fileID: 1540168952}
+  - component: {fileID: 1540168946}
+  - component: {fileID: 1540168945}
   m_Layer: 6
   m_Name: Earth
   m_TagString: Untagged
@@ -1935,6 +1934,22 @@ GameObject:
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!114 &1540168945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1540168944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34cbc4338826545c59fcd11978e87f06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  visRange: 1000
+  visUpdateInterval: 1
+  checkMethod: 0
+  forceHidden: 0
+--- !u!114 &1540168946
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1967,24 +1982,6 @@ MonoBehaviour:
     i15: 0
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 0
---- !u!114 &1540168946
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1540168944}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b10964541646eb3449bff403ebf87051, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  aroundPoint: {fileID: 15773211}
-  smoothTime: 0.3
-  circleInSecond: 0.002
-  offsetSin: 1
-  offsetCos: 1
-  rotationSpeed: 8
 --- !u!135 &1540168947
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2086,13 +2083,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1540168944}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34cbc4338826545c59fcd11978e87f06, type: 3}
+  m_Script: {fileID: 11500000, guid: 140649baace1ddc4aba38f17f797e012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visRange: 1000
-  visUpdateInterval: 1
-  checkMethod: 0
-  forceHidden: 0
+  _aroundPoint: {fileID: 15773211}
+  _smoothTime: 0.3
+  _circleInSecond: 0.002
+  _offsetSin: 1
+  _offsetCos: 1
+  _rotationSpeed: 8
 --- !u!1 &1591434084
 GameObject:
   m_ObjectHideFlags: 0
@@ -2105,11 +2104,10 @@ GameObject:
   - component: {fileID: 1591434089}
   - component: {fileID: 1591434088}
   - component: {fileID: 1591434087}
+  - component: {fileID: 1591434091}
+  - component: {fileID: 1591434092}
   - component: {fileID: 1591434086}
   - component: {fileID: 1591434085}
-  - component: {fileID: 1591434091}
-  - component: {fileID: 1591434093}
-  - component: {fileID: 1591434092}
   m_Layer: 6
   m_Name: Venus
   m_TagString: Untagged
@@ -2118,6 +2116,22 @@ GameObject:
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!114 &1591434085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1591434084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34cbc4338826545c59fcd11978e87f06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  visRange: 1000
+  visUpdateInterval: 1
+  checkMethod: 0
+  forceHidden: 0
+--- !u!114 &1591434086
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2150,24 +2164,6 @@ MonoBehaviour:
     i15: 0
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 0
---- !u!114 &1591434086
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1591434084}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b10964541646eb3449bff403ebf87051, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  aroundPoint: {fileID: 15773211}
-  smoothTime: 0.3
-  circleInSecond: 0.0015
-  offsetSin: 1
-  offsetCos: 1
-  rotationSpeed: 5
 --- !u!135 &1591434087
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2269,29 +2265,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1591434084}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34cbc4338826545c59fcd11978e87f06, type: 3}
+  m_Script: {fileID: 11500000, guid: 140649baace1ddc4aba38f17f797e012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visRange: 10
-  visUpdateInterval: 1
-  checkMethod: 0
-  forceHidden: 0
---- !u!114 &1591434093
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1591434084}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34cbc4338826545c59fcd11978e87f06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  visRange: 1000
-  visUpdateInterval: 1
-  checkMethod: 0
-  forceHidden: 0
+  _aroundPoint: {fileID: 15773211}
+  _smoothTime: 0.3
+  _circleInSecond: 0.0015
+  _offsetSin: 1
+  _offsetCos: 1
+  _rotationSpeed: 5
 --- !u!1 &1732397009
 GameObject:
   m_ObjectHideFlags: 0
@@ -2412,19 +2394,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1766109816}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d0ade89f465ee346b579dc3a14c0ddd, type: 3}
+  m_Script: {fileID: 11500000, guid: f4cde1f1acbd02a4c889d95434e2aab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  focus: {fileID: 0}
-  distance: 0.219
-  lookAngle: 0
-  focusRadius: 0
-  focusCentering: 0.238
-  sensitive: 1.88
-  rotationSpeed: 39
-  minVerticalAngle: -89
-  maxVerticalAngle: 89
-  obstacleMask:
+  _focus: {fileID: 0}
+  _distance: 0.219
+  _lookAngle: 0
+  _focusRadius: 0
+  _focusCentering: 0.238
+  _sensitive: 1.88
+  _rotationSpeed: 39
+  _minVerticalAngle: -89
+  _maxVerticalAngle: 89
+  _obstacleMask:
     serializedVersion: 2
     m_Bits: 0
 --- !u!20 &1766109818
@@ -2524,7 +2506,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1784406725}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02c42206f4ade644893019c34ffc9417, type: 3}
+  m_Script: {fileID: 11500000, guid: 53701953c8975364bb8b40ac84ea625d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   lookTarget: {fileID: 15773211}
@@ -2540,10 +2522,10 @@ GameObject:
   - component: {fileID: 1797633360}
   - component: {fileID: 1797633359}
   - component: {fileID: 1797633358}
-  - component: {fileID: 1797633357}
-  - component: {fileID: 1797633356}
   - component: {fileID: 1797633362}
   - component: {fileID: 1797633363}
+  - component: {fileID: 1797633357}
+  - component: {fileID: 1797633356}
   m_Layer: 6
   m_Name: Uranus
   m_TagString: Untagged
@@ -2552,6 +2534,22 @@ GameObject:
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!114 &1797633356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1797633355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34cbc4338826545c59fcd11978e87f06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  visRange: 1000
+  visUpdateInterval: 1
+  checkMethod: 0
+  forceHidden: 0
+--- !u!114 &1797633357
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2584,24 +2582,6 @@ MonoBehaviour:
     i15: 0
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 0
---- !u!114 &1797633357
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1797633355}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b10964541646eb3449bff403ebf87051, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  aroundPoint: {fileID: 15773211}
-  smoothTime: 0.3
-  circleInSecond: 0.005
-  offsetSin: 1
-  offsetCos: 1
-  rotationSpeed: 6
 --- !u!135 &1797633358
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2703,10 +2683,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1797633355}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34cbc4338826545c59fcd11978e87f06, type: 3}
+  m_Script: {fileID: 11500000, guid: 140649baace1ddc4aba38f17f797e012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visRange: 1000
-  visUpdateInterval: 1
-  checkMethod: 0
-  forceHidden: 0
+  _aroundPoint: {fileID: 15773211}
+  _smoothTime: 0.3
+  _circleInSecond: 0.005
+  _offsetSin: 1
+  _offsetCos: 1
+  _rotationSpeed: 6

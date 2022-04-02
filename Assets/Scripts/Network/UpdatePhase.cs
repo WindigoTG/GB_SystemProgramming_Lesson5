@@ -1,12 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public enum UpdatePhase
+namespace Network
 {
-    Update,
-    FixedUpdate,
-    LateUpdate,
-    PreRender, 
-    PostRender,
+    public enum UpdatePhase
+    {
+        Update,
+        FixedUpdate,
+        LateUpdate,
+        PreRender,
+        PostRender,
+    }
 }

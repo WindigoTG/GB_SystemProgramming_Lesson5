@@ -1,26 +1,26 @@
 using UnityEngine;
-
 namespace Main
 {
-    public class Singleton<T> : MonoBehaviour    where T: Object
+    public class Singleton<T> : MonoBehaviour where T : Object
     {
-        private static T staticInstance;
+        private static T _staticInstance;
 
         public static T Instance
         {
             get
             {
-                if (staticInstance != null)
+                if (_staticInstance != null)
                 {
-                    return staticInstance;
+                    return _staticInstance;
                 }
-                staticInstance = FindObjectOfType(typeof(T)) as T;
-
-                if (staticInstance is null)
+                _staticInstance = FindObjectOfType(typeof(T)) as T;
+#if UNITY_EDITOR
+                if (_staticInstance is null)
                 {
-                    Debug.LogError("An instance of " + typeof(T) + " is needed in the scene, but there is none.");
+                Debug.LogError("An instance of " + typeof(T) + " is needed in the scene, but there is none.");
                 }
-                return staticInstance;
+#endif
+                return _staticInstance;
             }
         }
     }

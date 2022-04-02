@@ -1,27 +1,23 @@
 using System;
-
 using UnityEngine;
 using UnityEngine.Networking;
-
 namespace Network
 {
-#pragma warning disable 618
+    #pragma warning disable 618
     public abstract class NetworkMovableObject : NetworkBehaviour
-#pragma warning restore 618
+    #pragma warning restore 618
     {
-        protected abstract float speed { get; }
-        protected Action OnUpdateAction { get; set; }
-        protected Action OnFixedUpdateAction { get; set; }
-        protected Action OnLateUpdateAction { get; set; }
-        protected Action OnPreRenderActionAction { get; set; }
-        protected Action OnPostRenderAction { get; set; }
+        protected abstract float _speed { get; }
+        protected Action _onUpdateAction { get; set; }
+        protected Action _onFixedUpdateAction { get; set; }
+        protected Action _onLateUpdateAction { get; set; }
+        protected Action _onPreRenderActionAction { get; set; }
+        protected Action _onPostRenderAction { get; set; }
 
-        protected UpdatePhase _updatePhase;
-
-#pragma warning disable 618
-        [SyncVar] protected Vector3 serverPosition;
-        [SyncVar] protected Vector3 serverEuler;
-#pragma warning restore 618
+    #pragma warning disable 618
+        [SyncVar] protected Vector3 _serverPosition;
+        [SyncVar] protected Vector3 _serverEuler;
+    #pragma warning restore 618
 
         public override void OnStartAuthority()
         {
@@ -30,47 +26,49 @@ namespace Network
 
         protected virtual void Initiate(UpdatePhase updatePhase = UpdatePhase.Update)
         {
-            _updatePhase = updatePhase;
-            switch (_updatePhase)
+            switch (updatePhase)
             {
                 case UpdatePhase.Update:
-                    OnUpdateAction += Movement;
+                    _onUpdateAction += Movement;
                     break;
                 case UpdatePhase.FixedUpdate:
-                    OnFixedUpdateAction += Movement;
+                    _onFixedUpdateAction += Movement;
                     break;
                 case UpdatePhase.LateUpdate:
-                    OnLateUpdateAction += Movement;
+                    _onLateUpdateAction += Movement;
                     break;
                 case UpdatePhase.PostRender:
-                    OnPostRenderAction += Movement;
+                    _onPostRenderAction += Movement;
                     break;
                 case UpdatePhase.PreRender:
-                    OnPreRenderActionAction += Movement;
+                    _onPreRenderActionAction += Movement;
                     break;
             }
         }
 
         private void Update()
         {
-            OnUpdateAction?.Invoke();
+            _onUpdateAction?.Invoke();
         }
 
         private void LateUpdate()
         {
-            OnLateUpdateAction?.Invoke();
+            _onLateUpdateAction?.Invoke();
         }
+
         private void FixedUpdate()
         {
-            OnFixedUpdateAction?.Invoke();
+            _onFixedUpdateAction?.Invoke();
         }
+
         private void OnPreRender()
         {
-            OnPreRenderActionAction?.Invoke();
+        _onPreRenderActionAction?.Invoke();
         }
+
         private void OnPostRender()
         {
-            OnPostRenderAction?.Invoke();
+            _onPostRenderAction?.Invoke();
         }
 
         protected virtual void Movement()
@@ -92,3 +90,4 @@ namespace Network
         protected abstract void SendToServer();
     }
 }
+
